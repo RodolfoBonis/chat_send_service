@@ -1,8 +1,8 @@
 package usecases
 
 import (
-	"chat_api/infra/repositories"
-	"chat_api/models"
+	"sender_service/infra/repositories"
+	"sender_service/models"
 )
 
 type SendMessageUC struct {

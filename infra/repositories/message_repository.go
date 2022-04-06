@@ -1,10 +1,11 @@
 package repositories
 
 import (
-	"chat_api/infra/services"
-	"chat_api/models"
-	"chat_api/utils"
 	"github.com/streadway/amqp"
+
+	"sender_service/infra/services"
+	"sender_service/models"
+	"sender_service/utils"
 )
 
 type MessageRepository struct{}

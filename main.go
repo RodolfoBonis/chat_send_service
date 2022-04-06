@@ -1,14 +1,16 @@
 package main
 
 import (
-	"chat_api/middlewares"
-	"chat_api/routes"
-	"chat_api/utils"
-	"github.com/gin-gonic/gin"
-	log "github.com/sirupsen/logrus"
 	"io"
 	"os"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
+
+	"sender_service/middlewares"
+	"sender_service/routes"
+	"sender_service/utils"
 )
 
 func main() {

@@ -1,14 +1,16 @@
 package middlewares
 
 import (
-	"chat_api/utils"
 	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	log "github.com/sirupsen/logrus"
 	"io"
 	"os"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
+
+	"sender_service/utils"
 )
 
 func JSONLogMiddleware() gin.HandlerFunc {

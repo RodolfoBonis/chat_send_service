@@ -1,9 +1,10 @@
 package routes
 
 import (
-	"chat_api/domain/usecases"
-	"chat_api/models"
 	"github.com/gin-gonic/gin"
+
+	"sender_service/domain/usecases"
+	"sender_service/models"
 )
 
 func messageRoutes(r *gin.Engine) {

@@ -1,4 +1,4 @@
-module chat_api
+module sender_service
 
 go 1.17
 
