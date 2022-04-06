@@ -2,13 +2,14 @@ package repositories
 
 import (
 	"chat_api/infra/services"
+	"chat_api/models"
 	"chat_api/utils"
 	"github.com/streadway/amqp"
 )
 
 type MessageRepository struct{}
 
-func (m *MessageRepository) SendMessage(message string) (bool, error) {
+func (m *MessageRepository) SendMessage(message models.MessageModel) (bool, error) {
 	go func() {
 		amqpService := services.AmqpService{
 			UrlConnection: utils.GetEnv("AMQP_URL", "amqp://guest:guest@localhost:5672/"),
@@ -18,8 +19,8 @@ func (m *MessageRepository) SendMessage(message string) (bool, error) {
 		channel := amqpService.OpenAmqpConnection()
 
 		message := amqp.Publishing{
-			ContentType: "text/plain",
-			Body:        []byte(message),
+			ContentType: "application/json",
+			Body:        message.ToJSON(),
 		}
 
 		err := channel.Publish(

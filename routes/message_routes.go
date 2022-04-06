@@ -2,6 +2,7 @@ package routes
 
 import (
 	"chat_api/domain/usecases"
+	"chat_api/models"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,8 +15,14 @@ func messageRoutes(r *gin.Engine) {
 
 func sendMessage(c *gin.Context) {
 	usecase := usecases.SendMessageUC{}
+	var message models.MessageModel
 
-	_, err := usecase.SendMessage(c.PostForm("message"))
+	if err := c.ShouldBindJSON(&message); err != nil {
+		c.JSON(400, gin.H{"error": err.Error()})
+		return
+	}
+
+	_, err := usecase.SendMessage(message)
 	if err != nil {
 		return
 	}
